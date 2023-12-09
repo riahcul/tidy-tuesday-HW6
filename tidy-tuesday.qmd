@@ -1,1 +1,41 @@
+---
+title: "HW 6: Tidy Tuesday"
+subtitle: "STA 199 - Fall 2023"
+author: "Mariah Culpepper"
+format: pdf
+editor: visual
+---
 
+```{r}
+#| label: load-packages
+#| message: false
+
+library(tidyverse)
+library(openintro)
+```
+
+```{r}
+#| label: loading-data
+age_gaps <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-14/age_gaps.csv')
+```
+
+```{r}
+#| label: visual
+
+age_gaps |>
+  ggplot(
+    aes(x = release_year, y = age_difference, color = release_year <= "1990")) +
+  geom_jitter() +
+  geom_smooth(aes(
+    group = release_year <= "1990"), method = "lm", se = F, 
+    color = "black", size = .5) +
+  labs(
+    title = "Age Difference of Movie Love Interests by Year",
+    x = "Release Year",
+    y = "Age Difference of Actors",
+    color = "",
+    caption = "Color of points for before and after 1990") + 
+  theme_bw() +
+  theme(legend.position = 'none') +
+  scale_color_brewer(palette = "Pastel1")
+```
