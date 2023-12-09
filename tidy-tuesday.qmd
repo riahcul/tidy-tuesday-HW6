@@ -16,7 +16,8 @@ library(openintro)
 
 ```{r}
 #| label: loading-data
-age_gaps <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-14/age_gaps.csv')
+age_gaps <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/
+                     data/2023/2023-02-14/age_gaps.csv')
 ```
 
 ```{r}
@@ -30,7 +31,7 @@ age_gaps |>
     group = release_year <= "1990"), method = "lm", se = F, 
     color = "black", size = .5) +
   labs(
-    title = "Age Difference of Movie Love Interests by Year",
+    title = "Age Difference Between Movie Love Interests by Year",
     x = "Release Year",
     y = "Age Difference of Actors",
     color = "",
